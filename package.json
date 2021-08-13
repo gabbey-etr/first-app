@@ -1,0 +1,22 @@
+{
+  "name": "first-app",
+  "version": "1.0.0",
+  "description": "\"uLapPA Framework code\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabbey-etr/first-app.git"
+  },
+  "author": "\"gabriel\"",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gabbey-etr/first-app/issues"
+  },
+  "homepage": "https://github.com/gabbey-etr/first-app#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
