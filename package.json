@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/gabbey-etr/first-app#readme",
   "dependencies": {
+    "Faker": "^0.7.2",
     "express": "^4.17.1"
   }
 }
