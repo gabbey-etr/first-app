@@ -30,5 +30,6 @@ router.get('/cadastro/insert',(req,res)=>{
 });
 
 router.get('/cadastro/list',(req,res)=>{});
+//teste
 
 module.exports = router;
