@@ -1,13 +1,13 @@
 const express = require ("express");
 const router = express.Router();
-const faker = require("faker");
+
+//const faker = require("faker");
+//let db = require("./db");
 
 router.use(express.static('public'));
 
-let db = require("./db");
-
 router.get('/',(req,res)=>{
-    res.send("pages/home");
+    res.render('pages/home');
     //res.send('pag teste');
 });
 
