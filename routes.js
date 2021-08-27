@@ -13,23 +13,27 @@ router.get('/',(req,res)=>{
 
 router.get('/about',(req,res)=>{
 
-    let usuarios=[];
-    for(let cont=1;cont<=6;cont++){
-        usuarios.push({name:faker.name.findName(),email:faker.internet.email(),avatar: faker.image.image()});
-    }
-    console.log(usuarios);
-    res.render('pages/about',{usuarios});
+    res.render('pages/about');
 
 });
-router.get('/curriculo',(req,res)=>{
-    res.send('meu curriculo');
+router.get('/cadastro',(req,res)=>{
+    //vetor com objeto literal (pra forma a tabela, pelo o que entendi)
+    let users = [
+        {name:"gabe",adress:"Rua Marechal Mallet",email:"exemplo@hotmail.com",age:20,height:1.60,vota:true},
+        {name:"Luana",adress:"Rua Marechal Mallet",email:"exemplo@hotmail.com",age:20,height:1.60,vota:true},
+        {name:"tingo",adress:"Rua Marechal Mallet",email:"exemplo@hotmail.com",age:20,height:1.60,vota:true}
+    ]
+    //aqui vai redenrizar a página criar juntos com as infos de users
+    res.render('pages/cadastro',{users});
 });
 
-router.get('/cadastro/insert',(req,res)=>{
-
+router.get('/cadastro/remove',(req,res)=>{
+    res.send('foi removido');
 });
 
-router.get('/cadastro/list',(req,res)=>{});
-//teste
+router.get('/cadastro/update',(req,res)=>{
+    res.send('atualizado');
+});
+
 
 module.exports = router;

@@ -5,7 +5,7 @@ const expressLayouts = require("express-ejs-layouts");
 
 const port=3000;
 const address="localhost";
-//criação do servidor com node e express
+//ativa uso do ejs
 app.set('view engine','ejs');
 app.use(expressLayouts);
 

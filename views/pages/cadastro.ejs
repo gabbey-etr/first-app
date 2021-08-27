@@ -1,0 +1,39 @@
+<%- contentFor( 'body') %>
+
+<div class="jumbotron">
+    <h2>Usuários Cadastrados no Sistema</h2>
+    <p>lista de usuários</p>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Endereço</th>
+                <th>Email</th>
+                <th>Idade</th>
+                <th>Altura</th>
+                <th>Vota</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- laço de repetição, pra pegar os dados de users-->
+                <% let linkRemove= "/cadastro/remove";%>
+                <% let linkUpdate= "/cadastro/update"; %>
+                
+                <% for(user of users){%>
+                    <tr>
+                        <td><%= user.name %></td>
+                        <td><%= user.email %></td>
+                        <td><%= user.adress %></td>
+                        <td><%= user.age %></td>
+                        <td><%= user.height %></td>
+                        <td><%= user.vota %></td>
+                        <td><a href="<%=linkUpdate%>"><i class="fas fa-pen"></i></td>
+                        <td><a href="<%=linkRemove%>"><i class = "fas fa-trash-alt"></i></td>
+                    </tr>
+                    
+                <% } %>
+            
+        </tbody>
+    </table>
+</div>
