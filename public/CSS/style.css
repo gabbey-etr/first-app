@@ -13,3 +13,14 @@ li{
 footer{
     background-color: rgb(63, 63, 196);
 }
+.show{
+    display:inline-flexbox;
+}
+.hidden{
+    display:none;
+}
+
+.copyleft {
+    display:inline-block;
+    transform: rotate(180deg);
+  }
