@@ -1,6 +1,31 @@
 let cadastro;
 
 
+function validar(inputs) {
+    let data = {name:"",email:"",adress:"",age:"",heigth:"",vote:"",};
+
+    data.name = inputs[0].value;
+    data.email = inputs[1].value;
+    data.adress = inputs[2].value;
+    data.age = inputs[3].value;
+    data.height = inputs[4].value;
+    data.vote = inputs[5].value;
+    // pegando o valor do nome pelos names
+ 
+  
+    // verificar se o nome está vazio
+    if (data.name.value == "") {
+      alert("Nome não informado");
+  
+      // Deixa o input com o focus
+      nome.focus();
+      // retorna a função e não olha as outras linhas
+      return;
+    }
+    
+}
+
+
 function update(index,link){
     //seleciona todas as tags que sejam td 
     let tds = document.querySelectorAll(`td[data-index-row='${index}']`);
@@ -205,7 +230,10 @@ function remove(index,_name,link){ //(index,link)
     }
 }
    
-function add(data){
+function add(link){
+        
+
+    
     //Adiciona um dado novo
 }
 

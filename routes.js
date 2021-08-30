@@ -16,6 +16,16 @@ router.get('/about',(req,res)=>{
     res.render('pages/about');
 
 });
+router.get('/list',(req,res)=>{  //
+    res.render('pages/list');
+});
+
+router.get('/new',(req,res)=>{  //
+    res.render('pages/new');
+});
+
+
+
 router.get('/cadastro',(req,res)=>{ //callback - funcao que trata dado evento  GET
 
     //a funcao render pode receber um pametro na forma de objeto literal
@@ -81,7 +91,14 @@ router.post('/cadastro/update',(req,res)=>{
 });
 
 router.get('/cadastro/list',(req,res)=>{
-    //Para fazer em casa: Como seria uma rotina para listar todos os itens cadastrados?
+    console.log("Olha a lista ae: ",users); //nao use esta linha se tiver muitos elementos em users pois causara lentidao no servidor
+    //let dados = JSON.parse(users);
+    res.send(JSON.stringify(users));
+    res.sendStatus(200);
+    res.status(200).json({
+        status:'sucess',
+        data: `Lista foi adiocionado com sucesso!`
+    });
 
 });
 
@@ -98,11 +115,13 @@ router.post('/cadastro/add',(req,res)=>{
     users.push(user);
     console.log("Usuário cadastrado: ",user);
     console.log("Lista dos usuários: ",users); //nao use esta linha se tiver muitos elementos em users pois causara lentidao no servidor
-    res.sendStatus(200);
-    res.status(200).json({
-        status:'sucess',
-        data: `Usuário ${user} foi adiocionado com sucesso!`
-    });
+    //pensei que mandando renderizar essa página de novo, a tabela apareceria atualizada
+    res.render('pages/cadastro',{users:users}); 
+    //res.status(200).json({
+    //    status:'sucess',
+     //   data: `Usuário ${user} foi adiocionado com sucesso!`
+    //});
+    
 
 });
 

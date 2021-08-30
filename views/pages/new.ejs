@@ -1,0 +1,47 @@
+<%- contentFor( 'body') %>
+
+
+<div class="container">
+    
+    <h3>Cadastrar novo usuário</h3>
+    <p>Preencha todos os campos</p>
+    
+        <form action="/cadastro/add" method="post" id="adicionar">
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="_name">Nome:</label>
+                    <input type="text" name="_name" id="_name" class="form-control" required>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="_email">E-mail:</label>
+                    <input type="text" name="_email" id="_email" class="form-control" required>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="_address">Endereço:</label>
+                    <input type="text" name="_address" id="_address" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="_heigth">Altura:</label>
+                    <input type="text" name="_heigth" id="_heigth" class="form-control" required>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="_age">Idade:</label>
+                    <input type="text" name="_age" id="_age" class="form-control" required>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="_vote">Votou:</label>
+                    <input type="text" name="_vote" id="_vote" class="form-control" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Enviar" class="btn btn-success" onclick="add('/cadastro/add/')">
+            </div>
+        </form>
+
+    
+</div>
+
