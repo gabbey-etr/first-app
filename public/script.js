@@ -1,30 +1,7 @@
 let cadastro;
 
 
-function validar(inputs) {
-    let data = {name:"",email:"",adress:"",age:"",heigth:"",vote:"",};
-
-    data.name = inputs[0].value;
-    data.email = inputs[1].value;
-    data.adress = inputs[2].value;
-    data.age = inputs[3].value;
-    data.height = inputs[4].value;
-    data.vote = inputs[5].value;
-    // pegando o valor do nome pelos names
- 
-  
-    // verificar se o nome está vazio
-    if (data.name.value == "") {
-      alert("Nome não informado");
-  
-      // Deixa o input com o focus
-      nome.focus();
-      // retorna a função e não olha as outras linhas
-      return;
-    }
-    
-}
-
+//tentei fazer a parte das validações dos dados utilizando patterns, já que não consegui criar uma função para isso
 
 function update(index,link){
     //seleciona todas as tags que sejam td 
@@ -156,26 +133,7 @@ function update(index,link){
                 console.log("Ocorreu erro no processamento dos dados no servidor: ",http.responseText);
             }     
         }
-    /*
-    readyState:
-    0: request not initialized
-    1: server connection established
-    2: request received
-    3: processing request
-    4: request finished and response is ready
-    status:
-    200: "OK"
-    403: "Forbidden"
-    404: "Page not found"
-    */
-    // baseado nos valores acima apresentados, o codigo abaixo mostra o que foi enviado pelo servidor como resposta ao envio de dados. No caso, se o request foi finalizado e o response foi recebido, a mensagem recebida do servidor eh mostrada no console do navegador. esse codigo foi feito apenas para verificar se tudo ocorreu bem no envio
-
-    // http.onreadystatechange = (e)=>{
-    //     if (http.readyState === 4 && http.status === 200) { //testa se o envio foi bem sucedido
-    //         console.log(http.responseText);
-
-    //     }
-    // }
+   
 
     });  
 
@@ -196,22 +154,7 @@ function remove(index,_name,link){ //(index,link)
 
     http.send(dataToSend);//envia dados para o servidor na forma de JSON
 
-    /* este codigo abaixo foi colocado para que a interface de cadastro so seja modificada quando se receber um aviso do servidor que a modificacao foi feita com sucesso. No caso o aviso vem na forma do codigo 200 de HTTP: OK */
-
-    /*
-    readyState:
-    0: request not initialized
-    1: server connection established
-    2: request received
-    3: processing request
-    4: request finished and response is ready
-    status:
-    200: "OK"
-    403: "Forbidden"
-    404: "Page not found"
-    */
-
-    // baseado nos valores acima apresentados, o codigo abaixo mostra o que foi enviado pelo servidor como resposta ao envio de dados. No caso, se o request foi finalizado e o response foi recebido, a mensagem recebida do servidor eh mostrada no console do navegador. esse codigo foi feito apenas para verificar se tudo ocorreu bem no envio
+  
 
     http.onload = ()=>{ 
         
@@ -231,32 +174,70 @@ function remove(index,_name,link){ //(index,link)
 }
    
 function add(link){
-        
+    const http = new XMLHttpRequest();
+        let data = {name:"",email:"",address:"",age:"",height:"",vote:""};
+        let dataToSend;
 
-    
-    //Adiciona um dado novo
+        http.open("POST",link,true);
+
+        http.setRequestHeader('Content-Type','application/json');
+
+        data.name = inputs[0].value;
+        data.email = inputs[1].value;
+        data.address = inputs[2].value;
+        data.age = inputs[3].value;
+        data.height = inputs[4].value;
+        data.vote = inputs[5].value;
+
+        dataToSend = JSON.stringify(data);
+
+        http.send(dataToSend);
+        http.onload = ()=> {
+            if (http.readyState === 4 && http.status === 200){
+                console.log("Usuário cadastrado: " + data.name);
+                alert("Usuário cadastrado: " + data.name)
+            }}
 }
 
 function list(){
-    //fazer em casa. Lista de usuários.
+    
+    const http = new XMLHttpRequest()
+    http.open('GET', '/listagem/update', true)
+    http.setRequestHeader('Content-Type','application/json')
 
-    //Primeira parte: envia mensagem para o servidor pedindo uma listagem dos usuários
+    http.send()
 
-    //Segunda parte: apos recebimento da lista de usuarios, no formato JSON, colocar os usuarios na interface
-    let tableList = document.getElementById("list");
+    http.onload = ()=>{
+        if (http.readyState === 4 && http.status === 200) {
+        //transforma a string  em formato JSON enviada pelo servidor novamente no seu tipo de dado anterior (lista de objetos)
+        let lista = JSON.parse(http.response)
 
-    let tr = document.createElement("tr");
-    let td = document.createElement("td");
-    let span = document.createElement("span");
-    let cont;
-    //for(let cont=0;cont<datas.length;cont++){ 
-        td.setAttribute(`data-index-row=${cont}`);
-        span.innerHTML =  Object.keys(datas[cont])[0] //keys 0 - name, 1 - email
-        span.className="show";
-        td.appendChild(span);
-        tr.appendChild(td);
-        
-        tableList.appendChild(tr);
-    //}
+        //se o contador começar do 3, so mostra a partir do ultimo adicionado (eu acho)
+        for(let i = 3; i<lista.users.length; i++){
+            let containerLista = document.getElementById('container-lista')
+            let div = document.createElement('div')
+            let paragrafo = document.createElement('p')
+            let unorderedList = document.createElement('ul')
+            let carac1 = document.createElement('li')
+            let carac2 = document.createElement('li')
+            let carac3 = document.createElement('li')
+            let carac4 = document.createElement('li')
 
+            containerLista.appendChild(div)
+            div.appendChild(paragrafo)
+            div.appendChild(unorderedList)
+            unorderedList.appendChild(carac2)
+            unorderedList.appendChild(carac1)
+            unorderedList.appendChild(carac3)
+            unorderedList.appendChild(carac4)
+            paragrafo.innerText = `${lista.users[i].name}`
+            
+            carac1.innerText = `Email: ${lista.users[i].email}`
+            carac2.innerText = `Idade: ${lista.users[i].age}`
+            carac3.innerText = `Altura: ${lista.users[i].height}`
+            carac4.innerText = `Votou: ${lista.users[i].vote}`
+        }
+
+    }
+    }
 }
