@@ -172,7 +172,7 @@ function remove(index,_name,link){ //(index,link)
 
     }
 }
-   
+//so depois de olhar para outros códigos, me toquei que essa função add servia para fazer a função list funcionar   
 function add(link){
     const http = new XMLHttpRequest();
         let data = {name:"",email:"",address:"",age:"",height:"",vote:""};
