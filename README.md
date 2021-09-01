@@ -1,1 +1,2 @@
 # first-app
+Trabalho 01 da disciplina Autoração Multimídia 2, desenvolvido com base no código do Professor Wellington Wagner F. Sarmento. Agradecimentos aos colegas Daniel Amorim, VaneskaSousa, Jottoss - https://github.com/Jottoss/first_app, por disponibilizarem seu códigos para consulta (muitas partes do meu trabalho so foram possíveis graças a eles).
