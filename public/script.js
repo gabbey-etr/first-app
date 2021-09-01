@@ -202,7 +202,7 @@ function add(link){
 function list(){
     
     const http = new XMLHttpRequest()
-    http.open('GET', '/listagem/update', true)
+    http.open('GET', '/lista/update', true)
     http.setRequestHeader('Content-Type','application/json')
 
     http.send()
