@@ -91,16 +91,23 @@ router.post('/cadastro/update',(req,res)=>{
 });
 
 router.get('/cadastro/list',(req,res)=>{
-    console.log("Olha a lista ae: ",users); //nao use esta linha se tiver muitos elementos em users pois causara lentidao no servidor
-    //let dados = JSON.parse(users);
-    res.send(JSON.stringify(users));
-    res.sendStatus(200);
-    res.status(200).json({
-        status:'sucess',
-        data: `Lista foi adiocionado com sucesso!`
-    });
+    console.log("Olha a lista ae: ",users); 
+    res.status(200).render('pages/list')
 
 });
+
+router.get('/lista',(req,res)=>{
+    // console.log("Olha a lista ae: ",users)
+    console.log('listagem funcionando(RENDERIZANDO /LISTAGEM)')
+    res.status(200).render('pages/lista')
+    // res.status(200).json({users: users})
+    
+});
+router.get('/lista/update',(req,res)=>{
+    res.status(200).send(JSON.stringify({users: users}))
+});
+
+
 
 router.post('/cadastro/add',(req,res)=>{
     let user={name:"",email:"",address:"",heigth:"",age:"",vote:""};
@@ -114,13 +121,9 @@ router.post('/cadastro/add',(req,res)=>{
 
     users.push(user);
     console.log("Usuário cadastrado: ",user);
-    console.log("Lista dos usuários: ",users); //nao use esta linha se tiver muitos elementos em users pois causara lentidao no servidor
-    //pensei que mandando renderizar essa página de novo, a tabela apareceria atualizada
-    res.render('pages/cadastro',{users:users}); 
-    //res.status(200).json({
-    //    status:'sucess',
-     //   data: `Usuário ${user} foi adiocionado com sucesso!`
-    //});
+    
+    res.status(200).render('pages/cadastro')
+    
     
 
 });
