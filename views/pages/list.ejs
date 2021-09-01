@@ -1,5 +1,13 @@
-<%- contentFor( 'body') %>
+<%- contentFor( 'body' ) %>
+<div class="container">
+    <h3>Dados Atualizados</h3>
+<p>Últimas inserções</p>
 
-<div class="jumbotron  ">
-    <p>lista</p>
+<div id='lista' class='buttonlist'>
+    <button onclick="list()" type='button' class='btn btn-outline-info' >visualizar</button>
+</div>
+<!-- <p id='pteste' style='text-align: center;'>testandosdoaidjas</p> -->
+<div><p >Lista:</p></div>
+<div  id='container-lista' style='display: grid; grid-template-columns: repeat(3, auto); justify-content: left; gap: 40px'>
+</div>
 </div>
